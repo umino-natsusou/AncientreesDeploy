@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"ancientrees.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.14.1","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"width":300},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="文档地址  安装Hexo：npm install -g hexo-cli 新建文件夹项目Ancientree ，在文件夹内执行： hexo init 然后：npm install 启动：hexo g 编译，然后hexo s启动   一. 新建与删除 新建：hexo new [layout] &lt;title&gt; 在指定目录下新建：在&#x2F;_post目录（对应模板目录）下新建目录，然后执行 hex">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hexo 01 - 部署运行">
+<meta property="og:url" content="http://ancientrees.com/2024/02/04/IT-APP/Hexo%2001%20-%20%E9%83%A8%E7%BD%B2%E8%BF%90%E8%A1%8C/index.html">
+<meta property="og:site_name" content="Ancientrees">
+<meta property="og:description" content="文档地址  安装Hexo：npm install -g hexo-cli 新建文件夹项目Ancientree ，在文件夹内执行： hexo init 然后：npm install 启动：hexo g 编译，然后hexo s启动   一. 新建与删除 新建：hexo new [layout] &lt;title&gt; 在指定目录下新建：在&#x2F;_post目录（对应模板目录）下新建目录，然后执行 hex">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-02-04T07:42:41.000Z">
+<meta property="article:modified_time" content="2024-02-04T07:44:01.527Z">
+<meta property="article:author" content="Umino Natsusou">
+<meta property="article:tag" content="IT">
+<meta property="article:tag" content="APP">
+<meta property="article:tag" content="Hexo">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://ancientrees.com/2024/02/04/IT-APP/Hexo%2001%20-%20%E9%83%A8%E7%BD%B2%E8%BF%90%E8%A1%8C/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://ancientrees.com/2024/02/04/IT-APP/Hexo%2001%20-%20%E9%83%A8%E7%BD%B2%E8%BF%90%E8%A1%8C/","path":"2024/02/04/IT-APP/Hexo 01 - 部署运行/","title":"Hexo 01 - 部署运行"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Hexo 01 - 部署运行 | Ancientrees</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Ancientrees</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%B8%80-%E6%96%B0%E5%BB%BA%E4%B8%8E%E5%88%A0%E9%99%A4"><span class="nav-number">1.</span> <span class="nav-text">一. 新建与删除</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BA%8C-%E6%9B%B4%E6%8D%A2%E4%B8%BB%E9%A2%98Next"><span class="nav-number">2.</span> <span class="nav-text">二. 更换主题Next</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Umino Natsusou"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Umino Natsusou</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yourname" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yourname" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yourname@gmail.com" title="E-Mail → mailto:yourname@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/yourname" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;yourname" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/yourname" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;yourname" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/yourname" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;yourname" rel="noopener me" target="_blank"><i class="fab fa-facebook fa-fw"></i>FB Page</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/yourname" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;yourname" rel="noopener me" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://youtube.com/yourname" title="YouTube → https:&#x2F;&#x2F;youtube.com&#x2F;yourname" rel="noopener me" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/yourname" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;yourname" rel="noopener me" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="skype:yourname?call|chat" title="Skype → skype:yourname?call|chat" rel="noopener me" target="_blank"><i class="fab fa-skype fa-fw"></i>Skype</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://ancientrees.com/2024/02/04/IT-APP/Hexo%2001%20-%20%E9%83%A8%E7%BD%B2%E8%BF%90%E8%A1%8C/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Umino Natsusou">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ancientrees">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Hexo 01 - 部署运行 | Ancientrees">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Hexo 01 - 部署运行
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+      
+
+      <time title="创建时间：2024-02-04 15:42:41 / 修改时间：15:44:01" itemprop="dateCreated datePublished" datetime="2024-02-04T15:42:41+08:00">2024-02-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/IT-APP/" itemprop="url" rel="index"><span itemprop="name">IT-APP</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><a target="_blank" rel="noopener" href="https://hexo.io/zh-cn/docs/writing">文档地址</a></p>
+<ol>
+<li>安装Hexo：<code>npm install -g hexo-cli</code></li>
+<li>新建文件夹项目<code>Ancientree</code> ，在文件夹内执行： <code>hexo init</code></li>
+<li>然后：<code>npm install</code></li>
+<li>启动：<code>hexo g</code> 编译，然后<code>hexo s</code>启动 </li>
+</ol>
+<h3 id="一-新建与删除"><a href="#一-新建与删除" class="headerlink" title="一. 新建与删除"></a>一. 新建与删除</h3><ol>
+<li>新建：<code>hexo new [layout] &lt;title&gt;</code></li>
+<li>在指定目录下新建：在/_post目录（对应模板目录）下新建目录，然后执行 <code>hexo new &lt;layout&gt; -p &lt;directory&gt;/&lt;name&gt;</code>，如<code>hexo new post -p test/test</code> 。或者对应文件夹内直接新建</li>
+<li>删除：直接删除对应文件就可以，然后重新编译： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line"></span><br><span class="line">hexo g</span><br><span class="line"></span><br><span class="line">hexo s</span><br><span class="line"></span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="二-更换主题Next"><a href="#二-更换主题Next" class="headerlink" title="二. 更换主题Next"></a>二. 更换主题Next</h3><p><a target="_blank" rel="noopener" href="https://github.com/next-theme/hexo-theme-next">项目地址</a>。<a target="_blank" rel="noopener" href="https://theme-next.js.org/docs/">文档地址</a>。<code>npm install hexo-theme-next@latest —save</code>。</p>
+<ol>
+<li>根目录中新建文件_config.next.yml，在这里配置Next。</li>
+<li>自定义样式：suorce文件夹下新建_data文件夹，在文件夹中新建各种样式文件，然后修改配置文件，添加样式文件的路径即可。 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 自定义样式文件路径</span></span><br><span class="line"><span class="attr">custom_file_path:</span></span><br><span class="line">  <span class="comment">#head: source/_data/head.njk</span></span><br><span class="line">  <span class="comment">#header: source/_data/header.njk</span></span><br><span class="line">  <span class="comment">#sidebar: source/_data/sidebar.njk</span></span><br><span class="line">  <span class="comment">#postMeta: source/_data/post-meta.njk</span></span><br><span class="line">  <span class="comment">#postBodyEnd: source/_data/post-body-end.njk</span></span><br><span class="line">  <span class="attr">footer:</span> <span class="string">source/_data/footer.njk</span></span><br><span class="line">  <span class="comment">#bodyEnd: source/_data/body-end.njk</span></span><br><span class="line">  <span class="comment">#variable: source/_data/variables.styl</span></span><br><span class="line">  <span class="comment">#mixin: source/_data/mixins.styl</span></span><br><span class="line">  <span class="attr">style:</span> <span class="string">source/_data/styles.styl</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>删除网页底部信息栏：_data文件夹中新建styles.styl，添加以下样式 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.powered-by</span> &#123;</span><br><span class="line">    <span class="attribute">display</span>: none</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>增加文章阴影：styles.styl中添加以下添加样式 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">if (hexo-config(&#x27;motion<span class="selector-class">.transition</span><span class="selector-class">.post_block</span>&#x27;)) &#123;</span><br><span class="line">  <span class="selector-class">.post-block</span> &#123;</span><br><span class="line">    <span class="attribute">visibility</span>: hidden;</span><br><span class="line">    <span class="attribute">margin-top</span>: <span class="number">60px</span>;</span><br><span class="line">    <span class="attribute">margin-bottom</span>: <span class="number">60px</span>;</span><br><span class="line">    <span class="attribute">padding</span>: <span class="number">25px</span>;</span><br><span class="line">    <span class="attribute">border-radius</span>: <span class="number">20px</span> <span class="number">20px</span> <span class="number">20px</span> <span class="number">20px</span>;</span><br><span class="line">    -webkit-<span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">5px</span> <span class="built_in">rgba</span>(<span class="number">202</span>, <span class="number">203</span>, <span class="number">203</span>, .<span class="number">5</span>);</span><br><span class="line">    -moz-<span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">5px</span> <span class="built_in">rgba</span>(<span class="number">202</span>, <span class="number">203</span>, <span class="number">204</span>, .<span class="number">5</span>);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="selector-class">.pagination</span>, <span class="selector-class">.comments</span> &#123;</span><br><span class="line">    <span class="attribute">visibility</span>: hidden;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li>开启本地搜索功能。 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 安装插件</span></span><br><span class="line">npm install hexo-generator-searchdb --save</span><br><span class="line"></span><br><span class="line"><span class="comment">// 修改 hexo/_config.yml 站点配置文件，新增以下内容</span></span><br><span class="line">search<span class="punctuation">:</span></span><br><span class="line">	path<span class="punctuation">:</span> search.xml</span><br><span class="line">	field<span class="punctuation">:</span> post</span><br><span class="line">	format<span class="punctuation">:</span> html</span><br><span class="line">	limit<span class="punctuation">:</span> <span class="number">10000</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 修改主题配置文件，启用搜索</span></span><br><span class="line">local_search<span class="punctuation">:</span></span><br><span class="line">	enable<span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br></pre></td></tr></table></figure>
+</li>
+<li>网站运行时间设置：_data文件夹下新<strong>footer.njk</strong>文件。添加以下： <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 网站运行时间的设置 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">id</span>=<span class="string">&quot;timeDate&quot;</span>&gt;</span>载入天数...<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"><span class="comment">&lt;!-- &lt;span id=&quot;times&quot;&gt;载入时分秒...&lt;/span&gt; --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="language-javascript"></span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">var</span> now = <span class="keyword">new</span> <span class="title class_">Date</span>();</span></span><br><span class="line"><span class="language-javascript">    <span class="keyword">function</span> <span class="title function_">createtime</span>(<span class="params"></span>) &#123;</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">var</span> grt= <span class="keyword">new</span> <span class="title class_">Date</span>(<span class="string">&quot;11/17/2022 8:00:00&quot;</span>);<span class="comment">//此处修改你的建站时间或者网站上线时间</span></span></span><br><span class="line"><span class="language-javascript">        now.<span class="title function_">setTime</span>(now.<span class="title function_">getTime</span>()+<span class="number">250</span>);</span></span><br><span class="line"><span class="language-javascript">        days = (now - grt ) / <span class="number">1000</span> / <span class="number">60</span> / <span class="number">60</span> / <span class="number">24</span>; dnum = <span class="title class_">Math</span>.<span class="title function_">floor</span>(days);</span></span><br><span class="line"><span class="language-javascript">        hours = (now - grt ) / <span class="number">1000</span> / <span class="number">60</span> / <span class="number">60</span> - (<span class="number">24</span> * dnum); hnum = <span class="title class_">Math</span>.<span class="title function_">floor</span>(hours);</span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">if</span>(<span class="title class_">String</span>(hnum).<span class="property">length</span> ==<span class="number">1</span> )&#123;hnum = <span class="string">&quot;0&quot;</span> + hnum;&#125; minutes = (now - grt ) / <span class="number">1000</span> /<span class="number">60</span> - (<span class="number">24</span> * <span class="number">60</span> * dnum) - (<span class="number">60</span> * hnum);</span></span><br><span class="line"><span class="language-javascript">        mnum = <span class="title class_">Math</span>.<span class="title function_">floor</span>(minutes); <span class="keyword">if</span>(<span class="title class_">String</span>(mnum).<span class="property">length</span> ==<span class="number">1</span> )&#123;mnum = <span class="string">&quot;0&quot;</span> + mnum;&#125;</span></span><br><span class="line"><span class="language-javascript">        seconds = (now - grt ) / <span class="number">1000</span> - (<span class="number">24</span> * <span class="number">60</span> * <span class="number">60</span> * dnum) - (<span class="number">60</span> * <span class="number">60</span> * hnum) - (<span class="number">60</span> * mnum);</span></span><br><span class="line"><span class="language-javascript">        snum = <span class="title class_">Math</span>.<span class="title function_">round</span>(seconds); </span></span><br><span class="line"><span class="language-javascript">        <span class="keyword">if</span>(<span class="title class_">String</span>(snum).<span class="property">length</span> ==<span class="number">1</span> )&#123;snum = <span class="string">&quot;0&quot;</span> + snum;&#125;</span></span><br><span class="line"><span class="language-javascript">        <span class="comment">// var times = document.getElementById(&quot;times&quot;).innerHTML = hnum + &quot; 小时 &quot; + mnum + &quot; 分 &quot; + snum + &quot; 秒&quot;;</span></span></span><br><span class="line"><span class="language-javascript">        <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;timeDate&quot;</span>).<span class="property">innerHTML</span> = <span class="string">&quot;本站已安全运行 &quot;</span>+dnum+<span class="string">&quot; 天 &quot;</span>+hnum + <span class="string">&quot; 小时 &quot;</span> + mnum + <span class="string">&quot; 分 &quot;</span> + snum + <span class="string">&quot; 秒&quot;</span>;</span></span><br><span class="line"><span class="language-javascript">    &#125;</span></span><br><span class="line"><span class="language-javascript"><span class="built_in">setInterval</span>(<span class="string">&quot;createtime()&quot;</span>,<span class="number">250</span>);</span></span><br><span class="line"><span class="language-javascript"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>添加live-2d。 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line">// 1. 安装插件</span><br><span class="line">npm install -save hexo-helper-live2d</span><br><span class="line"></span><br><span class="line">// 2. 安装模型</span><br><span class="line">npm install live2d-widget-model-wanko --save</span><br><span class="line"></span><br><span class="line">// 可选择其他模型</span><br><span class="line"><span class="comment"># live2d-widget-model-chitose</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># live2d-widget-model-epsilon2_1</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># live2d-widget-model-gf</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># live2d-widget-model-haru/01 (use npm install --save live2d-widget-model-haru)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># live2d-widget-model-haru/02 (use npm install --save live2d-widget-model-haru)</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># live2d-widget-model-haruto</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># live2d-widget-model-hibiki</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># live2d-widget-model-hijiki</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># live2d-widget-model-izumi</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># live2d-widget-model-koharu</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># live2d-widget-model-miku</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># live2d-widget-model-ni-j</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># live2d-widget-model-nico</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># live2d-widget-model-nietzsche</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># live2d-widget-model-nipsilon</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># live2d-widget-model-nito</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># live2d-widget-model-shizuku</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># live2d-widget-model-tororo</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># live2d-widget-model-tsumiki</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># live2d-widget-model-unitychan</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># live2d-widget-model-wanko</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># live2d-widget-model-z16</span></span><br><span class="line"></span><br><span class="line">// 3. 站点配置文件_config.yml添加以下代码</span><br><span class="line">live2d:</span><br><span class="line">  <span class="built_in">enable</span>: <span class="literal">true</span></span><br><span class="line">  scriptFrom: <span class="built_in">local</span></span><br><span class="line">  pluginRootPath: live2dw/</span><br><span class="line">  pluginJsPath: lib/</span><br><span class="line">  pluginModelPath: assets/</span><br><span class="line">  tagMode: <span class="literal">false</span></span><br><span class="line">  <span class="built_in">log</span>: <span class="literal">false</span></span><br><span class="line">  model:</span><br><span class="line">    use: live2d-widget-model-&lt;模型名字&gt;</span><br><span class="line">  display:</span><br><span class="line">    position: right</span><br><span class="line">    <span class="comment"># width: 150 # 大小根据模型结构自己调整合适的</span></span><br><span class="line">    <span class="comment"># height: 300</span></span><br><span class="line">  mobile:</span><br><span class="line">    show: <span class="literal">false</span> <span class="comment"># 是否在手机端显示</span></span><br></pre></td></tr></table></figure>
+</li>
+<li>背景图片设：将背景图放到source/images下，然后styles.styl中添加以下样式 <figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span> &#123;</span><br><span class="line">    <span class="attribute">background-image</span>: <span class="built_in">url</span>(<span class="string">../images/background.png</span>);</span><br><span class="line">    <span class="attribute">background-repeat</span>: no-repeat;</span><br><span class="line">    <span class="attribute">background-attachment</span>: fixed;</span><br><span class="line">    <span class="attribute">background-size</span>: <span class="number">100%</span> <span class="number">100%</span>;</span><br><span class="line">    <span class="attribute">opacity</span>: <span class="number">0.8</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/IT/" rel="tag"># IT</a>
+              <a href="/tags/APP/" rel="tag"># APP</a>
+              <a href="/tags/Hexo/" rel="tag"># Hexo</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/03/13/IT-APP/Piwigo%E9%83%A8%E7%BD%B2%EF%BC%88%E5%9F%BA%E4%BA%8ELNMP%EF%BC%89/" rel="prev" title="Piwigo部署（基于LNMP）">
+                  <i class="fa fa-chevron-left"></i> Piwigo部署（基于LNMP）
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/02/04/IT-APP/Hexo%2002%20-%20%E5%88%86%E7%B1%BB%E3%80%81%E6%A0%87%E7%AD%BE/" rel="next" title="Hexo 02 - 分类、标签">
+                  Hexo 02 - 分类、标签 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Umino Natsusou</span>
+</div>
+<div class="busuanzi-count">
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+<!-- 网站运行时间的设置 -->
+<span id="timeDate">载入天数...</span>
+<!-- <span id="times">载入时分秒...</span> -->
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("01/01/2023 00:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); 
+        if(String(snum).length ==1 ){snum = "0" + snum;}
+        // var times = document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "+hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+setInterval("createtime()",250);
+</script>
+
+
+    </div>
+  </footer>
+
+  
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right"},"mobile":{"show":false}});</script></body>
+</html>

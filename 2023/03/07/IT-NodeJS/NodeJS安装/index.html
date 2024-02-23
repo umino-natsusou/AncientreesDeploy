@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"ancientrees.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.14.1","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"width":300},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="介绍nvmnvm是node.js的版本管理工具。 node.js的版本是非常多的，不同的项目测试开发有时候会用到不同的版本，这时候需要切换不同的node.js版本。 通过nvm来安装node.js就可以实现nvm对node.js版本的管理。 一. 安装nvm&amp;nodejs（Windows）下载地址及教程。解说noinstall版本的方式。  解压后目录  双击install.cmd，会进入">
+<meta property="og:type" content="article">
+<meta property="og:title" content="NodeJS安装">
+<meta property="og:url" content="http://ancientrees.com/2023/03/07/IT-NodeJS/NodeJS%E5%AE%89%E8%A3%85/index.html">
+<meta property="og:site_name" content="Ancientrees">
+<meta property="og:description" content="介绍nvmnvm是node.js的版本管理工具。 node.js的版本是非常多的，不同的项目测试开发有时候会用到不同的版本，这时候需要切换不同的node.js版本。 通过nvm来安装node.js就可以实现nvm对node.js版本的管理。 一. 安装nvm&amp;nodejs（Windows）下载地址及教程。解说noinstall版本的方式。  解压后目录  双击install.cmd，会进入">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://ancientrees.com/2023/03/07/images/nvm.png">
+<meta property="article:published_time" content="2023-03-07T00:51:11.000Z">
+<meta property="article:modified_time" content="2024-02-21T02:42:06.113Z">
+<meta property="article:author" content="Umino Natsusou">
+<meta property="article:tag" content="IT">
+<meta property="article:tag" content="NodeJS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://ancientrees.com/2023/03/07/images/nvm.png">
+
+
+<link rel="canonical" href="http://ancientrees.com/2023/03/07/IT-NodeJS/NodeJS%E5%AE%89%E8%A3%85/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://ancientrees.com/2023/03/07/IT-NodeJS/NodeJS%E5%AE%89%E8%A3%85/","path":"2023/03/07/IT-NodeJS/NodeJS安装/","title":"NodeJS安装"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>NodeJS安装 | Ancientrees</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Ancientrees</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BB%8B%E7%BB%8Dnvm"><span class="nav-number">1.</span> <span class="nav-text">介绍nvm</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%80-%E5%AE%89%E8%A3%85nvm-amp-nodejs%EF%BC%88Windows%EF%BC%89"><span class="nav-number">2.</span> <span class="nav-text">一. 安装nvm&amp;nodejs（Windows）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BA%8C-%E5%AE%89%E8%A3%85nvm-amp-nodejs%EF%BC%88Linux%EF%BC%89"><span class="nav-number">3.</span> <span class="nav-text">二. 安装nvm&amp;nodejs（Linux）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%B8%89-%E5%AE%89%E8%A3%85npm%EF%BC%88Windows%EF%BC%89"><span class="nav-number">4.</span> <span class="nav-text">三. 安装npm（Windows）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%9B%9B-pm2%EF%BC%88%E4%B8%BB%E8%A6%81%E5%9C%A8linux%E7%AB%AF%E5%BA%94%E7%94%A8%EF%BC%89"><span class="nav-number">5.</span> <span class="nav-text">四. pm2（主要在linux端应用）</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Umino Natsusou"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Umino Natsusou</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yourname" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yourname" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yourname@gmail.com" title="E-Mail → mailto:yourname@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/yourname" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;yourname" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/yourname" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;yourname" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/yourname" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;yourname" rel="noopener me" target="_blank"><i class="fab fa-facebook fa-fw"></i>FB Page</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/yourname" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;yourname" rel="noopener me" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://youtube.com/yourname" title="YouTube → https:&#x2F;&#x2F;youtube.com&#x2F;yourname" rel="noopener me" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/yourname" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;yourname" rel="noopener me" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="skype:yourname?call|chat" title="Skype → skype:yourname?call|chat" rel="noopener me" target="_blank"><i class="fab fa-skype fa-fw"></i>Skype</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://ancientrees.com/2023/03/07/IT-NodeJS/NodeJS%E5%AE%89%E8%A3%85/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Umino Natsusou">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ancientrees">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="NodeJS安装 | Ancientrees">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          NodeJS安装
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-03-07 08:51:11" itemprop="dateCreated datePublished" datetime="2023-03-07T08:51:11+08:00">2023-03-07</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-02-21 10:42:06" itemprop="dateModified" datetime="2024-02-21T10:42:06+08:00">2024-02-21</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/IT-NodeJS/" itemprop="url" rel="index"><span itemprop="name">IT-NodeJS</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h2 id="介绍nvm"><a href="#介绍nvm" class="headerlink" title="介绍nvm"></a>介绍nvm</h2><p>nvm是node.js的版本管理工具。</p>
+<p>node.js的版本是非常多的，不同的项目测试开发有时候会用到不同的版本，这时候需要切换不同的node.js版本。</p>
+<p>通过nvm来安装node.js就可以实现nvm对node.js版本的管理。</p>
+<h2 id="一-安装nvm-amp-nodejs（Windows）"><a href="#一-安装nvm-amp-nodejs（Windows）" class="headerlink" title="一. 安装nvm&amp;nodejs（Windows）"></a>一. 安装nvm&amp;nodejs（Windows）</h2><p><a target="_blank" rel="noopener" href="https://github.com/coreybutler/nvm-windows">下载地址及教程</a>。解说noinstall版本的方式。</p>
+<ol>
+<li>解压后目录 <img data-src="../../images/nvm.png" alt="nvm.png"></li>
+<li>双击install.cmd，会进入命令行，Enter确认，会在所在盘根目录看到生成文件<strong>settings.txt</strong>（没有生成的话就自己新建），将文件paste到nvm目录下，打开文件，将内容修改为以下。<ul>
+<li>root是nvm路径</li>
+<li>path是你想要的node.js路径</li>
+<li>使用淘宝镜像，下载速度更快</li>
+</ul>
+</li>
+<li>配置环境变量，使得nvm全局可用（如果已存在以下两个环境变量，将其删除）。<ul>
+<li>新增环境变量 <strong>NVM_HOME</strong>，值 C:_Code\nvm</li>
+<li>新增环境变量 <strong>NVM_SYMLINK</strong>，值 C:_Code\nodejs</li>
+<li>将新增的环境变量添加到Path</li>
+</ul>
+</li>
+<li>任意位置打开命令行，输入 <strong>nvm install latest</strong>，会下载最新版本的node.js到指定路径；当然想下载其他版本只要制定版本号就可以了。下载完成后，要输入 <strong>nvm use 版本号</strong> 以开始使用<strong>nodejs</strong></li>
+<li>几个常用的命令 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看nvm版本</span></span><br><span class="line">nvm version</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看已安装的node版本</span></span><br><span class="line">nvm list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看所有可用nodejs版本</span></span><br><span class="line">nvm list available </span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装最新版本的nodejs。如果出现错误，则前往官网下载最新的nvm版本，覆盖更新。</span></span><br><span class="line">nvm install latest </span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装指定版本</span></span><br><span class="line">nvm install 版本号</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看已安装的nodejs版本</span></span><br><span class="line">nvm <span class="built_in">ls</span>    </span><br><span class="line"></span><br><span class="line"><span class="comment"># 使用用指定版本号的nodejs    </span></span><br><span class="line">nvm use 版本号 </span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除指定版本号的nodejs</span></span><br><span class="line">nvm uninstall 版本号 </span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="二-安装nvm-amp-nodejs（Linux）"><a href="#二-安装nvm-amp-nodejs（Linux）" class="headerlink" title="二. 安装nvm&amp;nodejs（Linux）"></a>二. 安装nvm&amp;nodejs（Linux）</h2><p>git安装</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. </span></span><br><span class="line"><span class="built_in">cd</span> ~/</span><br><span class="line"><span class="comment"># 2. 下载项目</span></span><br><span class="line">git <span class="built_in">clone</span> https://github.com/nvm-sh/nvm.git .nvm</span><br><span class="line"><span class="comment"># 3. </span></span><br><span class="line"><span class="built_in">cd</span> ~/.nvm</span><br><span class="line"><span class="comment"># 4. </span></span><br><span class="line">git checkout v0.39.7</span><br><span class="line"><span class="comment"># 5. activate</span></span><br><span class="line">. ./nvm.sh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 6. 设置配置。打开配置文件bashrc，看配置是否存在</span></span><br><span class="line">vim ~/.bashrc</span><br><span class="line"></span><br><span class="line"><span class="comment"># 7. i进入编辑模式，写入配置，主要配置NVM_DIR。如果已自动配置，则输入:q退出</span></span><br><span class="line"><span class="built_in">export</span> NVM_DIR=<span class="string">&quot;<span class="variable">$HOME</span>/.nvm&quot;</span></span><br><span class="line">[ -s <span class="string">&quot;<span class="variable">$NVM_DIR</span>/nvm.sh&quot;</span> ] &amp;&amp; \. <span class="string">&quot;<span class="variable">$NVM_DIR</span>/nvm.sh&quot;</span>  <span class="comment"># This loads nvm</span></span><br><span class="line">[ -s <span class="string">&quot;<span class="variable">$NVM_DIR</span>/bash_completion&quot;</span> ] &amp;&amp; \. <span class="string">&quot;<span class="variable">$NVM_DIR</span>/bash_completion&quot;</span>  <span class="comment"># This loads nvm bash_completion</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 8. 使用配置</span></span><br><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br><span class="line"></span><br><span class="line"><span class="comment"># 9. 判断nvm是否已经安装成功</span></span><br><span class="line">nvm -v</span><br><span class="line"></span><br><span class="line"><span class="comment"># 6. 安装最新版本node</span></span><br><span class="line">nvm install node</span><br><span class="line"></span><br><span class="line"><span class="comment"># 7. 使用最新版本的node</span></span><br><span class="line">nvm use node</span><br><span class="line"></span><br><span class="line"><span class="comment"># 8. 安装新的node版本并且将全局npm包迁移</span></span><br><span class="line">nvm install node --reinstall-packages-from=node</span><br></pre></td></tr></table></figure>
+
+<h2 id="三-安装npm（Windows）"><a href="#三-安装npm（Windows）" class="headerlink" title="三. 安装npm（Windows）"></a>三. 安装npm（Windows）</h2><p>每个node.js都是自带npm的，但是该npm只属于对应版本的node.js；这样一来，在切换node.js版本的时候也会造成npm的切换，便会使得npm下的一些全局包无法共享使用，每切换一次node.js版本，都必须确认其npm下的全局包是否完全 —— 这显然是不符合我们的使用习惯的。</p>
+<p>综上，我们需要一个独立的npm。</p>
+<ol>
+<li>配置独立的npm安装路径。打开命令行，输入 <strong>npm config set prefix “C:_Code\nvm\npm”<strong>。用户文件目录下会生成一个</strong>.npmrc</strong>的文件，打开后可以看到如下内容：<strong>prefix=C:_Code\nvm\npm</strong></li>
+<li>下载npm。命令行输入 <strong>npm install npm -g</strong>。这样独立的npm就下载完成了。</li>
+<li>配置环境变量。新增环境变量 <strong>NPM_HOME</strong>，值 <strong>C:_Code\nvm\npm，</strong>添加 <strong>%NPM_HOME%</strong> 到path。</li>
+<li>一些常用命令 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看npm信息</span></span><br><span class="line">npm version</span><br><span class="line"></span><br><span class="line"><span class="comment"># 全局安装最新的npm版本</span></span><br><span class="line">**npm install npm -g</span><br><span class="line"></span><br><span class="line"><span class="comment"># 1. 初始化一个项目，生成一个package.json文件</span></span><br><span class="line">npm init</span><br><span class="line"><span class="comment"># 2. 安装项目依赖</span></span><br><span class="line">npm install</span><br><span class="line"><span class="comment"># 3. 卸载项目依赖，可指定某个包或某个版本</span></span><br><span class="line">npm uninstall</span><br><span class="line"><span class="comment"># 4. 更新项目依赖，可指定某个包或某个版本</span></span><br><span class="line">npm update</span><br><span class="line"><span class="comment"># 5. 查看当前项目依赖</span></span><br><span class="line">npm list</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看全局安装的包</span></span><br><span class="line">npm list -g**</span><br><span class="line"></span><br><span class="line"><span class="comment"># 设置镜像源</span></span><br><span class="line">npm config <span class="built_in">set</span> registry=http://registry.npmjs.org</span><br><span class="line"><span class="comment"># 查看代理</span></span><br><span class="line">npm config get proxy</span><br><span class="line"><span class="comment"># 设置http代理</span></span><br><span class="line">npm config <span class="built_in">set</span> proxy=http://127.0.0.1:7891</span><br><span class="line"><span class="comment"># 设置https代理</span></span><br><span class="line">npm config <span class="built_in">set</span> https-proxy=http://127.0.0.1:7891</span><br><span class="line"><span class="comment"># 清除代理或源</span></span><br><span class="line">npm config delete proxy</span><br><span class="line">npm config delete https-proxy</span><br><span class="line">npm config delete registry</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h2 id="四-pm2（主要在linux端应用）"><a href="#四-pm2（主要在linux端应用）" class="headerlink" title="四. pm2（主要在linux端应用）"></a>四. pm2（主要在linux端应用）</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 安装pm2</span></span><br><span class="line">npm install pm2 -g</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 开机自启动服务</span></span><br><span class="line"><span class="comment">## a. 把要开机自启动的服务开启</span></span><br><span class="line"><span class="comment">## b. 执行以下命令，新建开机自启动服务配置文件</span></span><br><span class="line">			pm2 startup</span><br><span class="line"><span class="comment">## c. 保存配置。配置保存于/root/.pm2/dump.pm2。</span></span><br><span class="line">      pm2 save</span><br><span class="line"><span class="comment">## d. 查看是否已开启</span></span><br><span class="line">			systemctl status pm2-root.service</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 一些常用的pm2命令</span></span><br><span class="line">启动script：pm2 start pnpm --watch --name XX -- run script命令</span><br><span class="line">启动：pm2 start demo.js  //demo.js是你要启动的app_name|app_id文件</span><br><span class="line">停止：pm2 stop app_name|app_id</span><br><span class="line">删除：pm2 delete app_name|app_id</span><br><span class="line">重启：pm2 restart app_name|app_id</span><br><span class="line">监控：pm2 monit</span><br><span class="line">查看所有：pm2 list</span><br><span class="line">查看某个：pm2 show 0</span><br><span class="line">停止所有：pm2 stop all</span><br><span class="line">停止某个：pm2 stop 0</span><br><span class="line">重载所有：pm2 reload all</span><br><span class="line">重载某个：pm2 reload 0</span><br><span class="line">重启所有：PM2 restart all</span><br><span class="line">删除某个：pm2 delete 0</span><br><span class="line">安装最新：npm install pm2@lastest -g</span><br><span class="line">升级：pm2 updatePM2</span><br><span class="line">帮助：pm2 --<span class="built_in">help</span></span><br><span class="line">停止所有：pm2 stop all</span><br><span class="line">查看所有的进程：pm2 list</span><br><span class="line">查看所有的进程状态：pm2 status</span><br><span class="line">查看某一个进程的信息：pm2 describe app_name|app_id</span><br><span class="line">参数说明</span><br><span class="line">--watch：监听应用目录源码的变化，一旦发生变化，自动重启。如果要精确监听、不见听的目录，最好通过配置文件</span><br><span class="line">-i --instances：启用多少个实例，可用于负载均衡。如果-i 0或者-i max，则根据当前机器核数确定实例数目，可以弥补node.js缺陷</span><br><span class="line">--ignore-watch：排除监听的目录/文件，可以是特定的文件名，也可以是正则。比如--ignore-watch=<span class="string">&quot;test node_modules &quot;</span>some scripts<span class="string">&quot;</span></span><br><span class="line"><span class="string">-n --name：应用的名称，查看应用信息的时候可以用到</span></span><br><span class="line"><span class="string">-o --output &lt;path&gt;：标准输出日志文件的路径，有默认路径</span></span><br><span class="line"><span class="string">-e --error &lt;path&gt;：错误输出日志文件的路径，有默认路径</span></span><br><span class="line"><span class="string">--interpreter &lt;interpreter&gt;：the interpreter pm2 should use for executing app (bash, python...)</span></span><br><span class="line"><span class="string">如完整参数命令：</span></span><br><span class="line"><span class="string">pm2 start demo.js --watch -i 2   //开启2个进程</span></span><br><span class="line"><span class="string">pm2 start app.js -i max   //根据机器CPU核数，开启对应数目的进程</span></span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/IT/" rel="tag"># IT</a>
+              <a href="/tags/NodeJS/" rel="tag"># NodeJS</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/03/06/IT-Python/Conda/" rel="prev" title="Conda">
+                  <i class="fa fa-chevron-left"></i> Conda
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/03/13/IT-Linux/Linux%E7%B3%BB%E7%BB%9F%E5%87%BA%E5%8F%91/" rel="next" title="Linux系统出发">
+                  Linux系统出发 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Umino Natsusou</span>
+</div>
+<div class="busuanzi-count">
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+<!-- 网站运行时间的设置 -->
+<span id="timeDate">载入天数...</span>
+<!-- <span id="times">载入时分秒...</span> -->
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("01/01/2023 00:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); 
+        if(String(snum).length ==1 ){snum = "0" + snum;}
+        // var times = document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "+hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+setInterval("createtime()",250);
+</script>
+
+
+    </div>
+  </footer>
+
+  
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right"},"mobile":{"show":false}});</script></body>
+</html>

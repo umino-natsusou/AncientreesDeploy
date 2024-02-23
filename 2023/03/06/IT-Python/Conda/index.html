@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"ancientrees.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.14.1","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"width":300},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="首推用这种方式开启python，地址。推荐安装miniconda，更加精简和轻便。 1. Windows下安装下载安装完毕后，配置环境变量：  C:_Code\miniconda3  —— （Python） C:_Code\miniconda3\Scripts  ——  （Conda Scripts） C:_Code\miniconda3\Library\bin —— （Conda Library">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Conda">
+<meta property="og:url" content="http://ancientrees.com/2023/03/06/IT-Python/Conda/index.html">
+<meta property="og:site_name" content="Ancientrees">
+<meta property="og:description" content="首推用这种方式开启python，地址。推荐安装miniconda，更加精简和轻便。 1. Windows下安装下载安装完毕后，配置环境变量：  C:_Code\miniconda3  —— （Python） C:_Code\miniconda3\Scripts  ——  （Conda Scripts） C:_Code\miniconda3\Library\bin —— （Conda Library">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2023-03-06T08:54:03.000Z">
+<meta property="article:modified_time" content="2024-02-04T03:32:15.875Z">
+<meta property="article:author" content="Umino Natsusou">
+<meta property="article:tag" content="IT">
+<meta property="article:tag" content="Python">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://ancientrees.com/2023/03/06/IT-Python/Conda/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://ancientrees.com/2023/03/06/IT-Python/Conda/","path":"2023/03/06/IT-Python/Conda/","title":"Conda"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>Conda | Ancientrees</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Ancientrees</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-Windows%E4%B8%8B%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">1. Windows下安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6%EF%BC%88%E9%85%8D%E7%BD%AE%E4%BA%86VPN%E5%88%99%E5%8F%AF%E5%BF%BD%E7%95%A5%EF%BC%89"><span class="nav-number"></span> <span class="nav-text">配置文件（配置了VPN则可忽略）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-Linux%E4%B8%8B%E5%AE%89%E8%A3%85"><span class="nav-number">1.</span> <span class="nav-text">2. Linux下安装</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8"><span class="nav-number"></span> <span class="nav-text">使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PIP"><span class="nav-number"></span> <span class="nav-text">PIP</span></a></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Umino Natsusou"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Umino Natsusou</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">14</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">7</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">17</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yourname" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yourname" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yourname@gmail.com" title="E-Mail → mailto:yourname@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/yourname" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;yourname" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/yourname" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;yourname" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/yourname" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;yourname" rel="noopener me" target="_blank"><i class="fab fa-facebook fa-fw"></i>FB Page</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/yourname" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;yourname" rel="noopener me" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://youtube.com/yourname" title="YouTube → https:&#x2F;&#x2F;youtube.com&#x2F;yourname" rel="noopener me" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/yourname" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;yourname" rel="noopener me" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="skype:yourname?call|chat" title="Skype → skype:yourname?call|chat" rel="noopener me" target="_blank"><i class="fab fa-skype fa-fw"></i>Skype</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://ancientrees.com/2023/03/06/IT-Python/Conda/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Umino Natsusou">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ancientrees">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="Conda | Ancientrees">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Conda
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2023-03-06 16:54:03" itemprop="dateCreated datePublished" datetime="2023-03-06T16:54:03+08:00">2023-03-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-02-04 11:32:15" itemprop="dateModified" datetime="2024-02-04T11:32:15+08:00">2024-02-04</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/IT-Python/" itemprop="url" rel="index"><span itemprop="name">IT-Python</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>首推用这种方式开启python，<a target="_blank" rel="noopener" href="https://docs.conda.io/projects/conda/en/stable/index.html">地址</a>。推荐安装miniconda，更加精简和轻便。</p>
+<h3 id="1-Windows下安装"><a href="#1-Windows下安装" class="headerlink" title="1. Windows下安装"></a>1. Windows下安装</h3><p>下载安装完毕后，配置环境变量：</p>
+<ol>
+<li>C:_Code\miniconda3  —— （Python）</li>
+<li>C:_Code\miniconda3\Scripts  ——  （Conda Scripts）</li>
+<li>C:_Code\miniconda3\Library\bin —— （Conda Library Application）</li>
+</ol>
+<p>配置完成后，cmd输入python检测。（windows下会出现输入python后打开应用商店的情况，这时候进入“应用执行别名”，把python相关的“应用安装程序”关掉即可）。一切安装完毕好，执行 <code>conda.init</code> 命令，重新打开终端。</p>
+<h2 id="配置文件（配置了VPN则可忽略）"><a href="#配置文件（配置了VPN则可忽略）" class="headerlink" title="配置文件（配置了VPN则可忽略）"></a>配置文件（配置了VPN则可忽略）</h2><p>配置文件为~.condarc，打开配置文件，进行编辑。因为是国内，所以需要配置镜像。</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">default_channels<span class="punctuation">:</span></span><br><span class="line">  - https<span class="punctuation">:</span><span class="comment">//mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/main</span></span><br><span class="line">  - https<span class="punctuation">:</span><span class="comment">//mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/r</span></span><br><span class="line">  - https<span class="punctuation">:</span><span class="comment">//mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/msys2</span></span><br><span class="line">custom_channels<span class="punctuation">:</span></span><br><span class="line">  conda-forge<span class="punctuation">:</span> https<span class="punctuation">:</span><span class="comment">//mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span></span><br><span class="line">  msys2<span class="punctuation">:</span> https<span class="punctuation">:</span><span class="comment">//mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span></span><br><span class="line">  bioconda<span class="punctuation">:</span> https<span class="punctuation">:</span><span class="comment">//mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span></span><br><span class="line">  menpo<span class="punctuation">:</span> https<span class="punctuation">:</span><span class="comment">//mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span></span><br><span class="line">  pytorch<span class="punctuation">:</span> https<span class="punctuation">:</span><span class="comment">//mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span></span><br><span class="line">  pytorch-lts<span class="punctuation">:</span> https<span class="punctuation">:</span><span class="comment">//mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span></span><br><span class="line">  simpleitk<span class="punctuation">:</span> https<span class="punctuation">:</span><span class="comment">//mirrors.tuna.tsinghua.edu.cn/anaconda/cloud</span></span><br><span class="line">show_channel_urls<span class="punctuation">:</span> <span class="literal"><span class="keyword">true</span></span></span><br><span class="line">ssl_verify<span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span></span><br></pre></td></tr></table></figure>
+<h3 id="2-Linux下安装"><a href="#2-Linux下安装" class="headerlink" title="2. Linux下安装"></a>2. Linux下安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 安装脚本</span></span><br><span class="line">wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 2. 安装</span></span><br><span class="line">sh Miniconda3-latest-Linux-x86_64.sh</span><br><span class="line"></span><br><span class="line"><span class="comment"># 3. 使用配置</span></span><br><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br><span class="line"></span><br><span class="line"><span class="comment"># 4. 检查是否安装成功</span></span><br><span class="line">conda -V</span><br></pre></td></tr></table></figure>
+
+<h2 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h2><ol>
+<li>环境管理</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看版本</span></span><br><span class="line">conda --version</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看详情</span></span><br><span class="line">conda info</span><br><span class="line"></span><br><span class="line"><span class="comment"># 升级</span></span><br><span class="line">conda update conda</span><br><span class="line"><span class="comment"># 有时候不起作用，则使用强制更新</span></span><br><span class="line">conda update --force conda</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看所有环境</span></span><br><span class="line">conda <span class="built_in">env</span> list</span><br><span class="line">conda info -e</span><br><span class="line"></span><br><span class="line"><span class="comment"># 创建环境</span></span><br><span class="line">conda create -n &lt;env_name&gt;</span><br><span class="line"><span class="comment"># 创建指定版本的环境</span></span><br><span class="line">conda create -n [env_name] python=3.9.12</span><br><span class="line"><span class="comment"># 复制环境/重命名环境（通过复制来完成）</span></span><br><span class="line">conda create -n &lt;new_env_name&gt; --<span class="built_in">clone</span> &lt;old_env_name&gt;</span><br><span class="line"><span class="comment"># 删除环境</span></span><br><span class="line">conda remove -n &lt;env_name&gt; --all</span><br><span class="line"></span><br><span class="line"><span class="comment"># 用当前目录下的配置文件创建新的运行环境</span></span><br><span class="line">mamba <span class="built_in">env</span> create -f environment.yaml</span><br><span class="line"></span><br><span class="line"><span class="comment"># 启用环境（启用环境、关闭环境推荐用conda命令）</span></span><br><span class="line">conda activate &lt;env_name&gt;</span><br><span class="line"><span class="comment"># 关闭环境</span></span><br><span class="line">conda deactivate</span><br><span class="line"></span><br><span class="line"><span class="comment"># 打包环境</span></span><br><span class="line">conda <span class="built_in">env</span> <span class="built_in">export</span> &gt; &lt;env_name&gt;.yaml</span><br><span class="line"><span class="comment"># 打包环境（用pip）</span></span><br><span class="line">pip freeze &gt; requirements.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看已添加的channels</span></span><br><span class="line">conda config --get channels</span><br><span class="line"><span class="comment"># 添加清华镜像(安装一次，镜像也只配置一次)</span></span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free</span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/conda-forge</span><br><span class="line">conda config --add channels https://mirrors.tuna.tsinghua.edu.cn/anaconda/cloud/bioconda</span><br><span class="line">conda config --<span class="built_in">set</span> show_channel_urls <span class="built_in">yes</span></span><br><span class="line"><span class="comment"># 执行完上述命令后，会生成 ~/.condarc</span></span><br><span class="line"><span class="comment"># 删除镜像源</span></span><br><span class="line">conda config --remove channels <span class="string">&#x27;https://mirrors.tuna.tsinghua.edu.cn/anaconda/pkgs/free&#x27;</span></span><br><span class="line"><span class="comment"># 要删除所有镜像源的话，直接删除~/.condarc即可</span></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>包管理</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 查看当前环境下所有的包</span></span><br><span class="line">conda list</span><br><span class="line"><span class="comment"># 查看指定环境下所有的包</span></span><br><span class="line">conda list -n &lt;env_name&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 搜索某个包的信息，查看该包可用的版</span></span><br><span class="line">conda search &lt;package_name&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 安装指定包</span></span><br><span class="line">conda install &lt;package_name&gt;</span><br><span class="line"><span class="comment"># 安装指定包的指定版本</span></span><br><span class="line">conda install &lt;package_name&gt;=1.1.0</span><br><span class="line"><span class="comment"># 使用指定镜像地址安装包</span></span><br><span class="line">conda install -c &lt;镜像地址&gt; &lt;package_name&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更新当前环境下所有的包</span></span><br><span class="line">conda update --all</span><br><span class="line"><span class="comment"># 更新指定包</span></span><br><span class="line">conda update &lt;package_name&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 删除包</span></span><br><span class="line">conda remove &lt;package_name&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="PIP"><a href="#PIP" class="headerlink" title="PIP"></a>PIP</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 输出环境中已经安装的所有的包及其精确版本号</span></span><br><span class="line">pip freeze &gt; requirements.txt</span><br><span class="line"><span class="comment"># 2. 通过读取这个文件并安装指定版本的依赖包来安装项目</span></span><br><span class="line">pip install -r requirements.txt</span><br><span class="line"></span><br><span class="line"><span class="comment"># 查看pip版本</span></span><br><span class="line">pip --version</span><br><span class="line"></span><br><span class="line"><span class="comment"># 更新pip</span></span><br><span class="line">pip install --upgrade pip</span><br><span class="line"><span class="comment"># 如果更新失败，可以尝试</span></span><br><span class="line"><span class="comment"># 1. pip依赖于setuptools进行安装。如果setuptools版本过低,可能也会导致pip升级失败</span></span><br><span class="line">pip install --upgrade setuptools</span><br><span class="line"><span class="comment"># 2. 卸载旧版本pip并重装</span></span><br><span class="line">pip uninstall pip</span><br><span class="line">curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py  </span><br><span class="line">python get-pip.py</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/IT/" rel="tag"># IT</a>
+              <a href="/tags/Python/" rel="tag"># Python</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2023/03/06/IT-Windows/Terminal%20&%20oh-my-posh3%20&%20WSL2/" rel="prev" title="Terminal & oh-my-posh3 & WSL2">
+                  <i class="fa fa-chevron-left"></i> Terminal & oh-my-posh3 & WSL2
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2023/03/07/IT-NodeJS/NodeJS%E5%AE%89%E8%A3%85/" rel="next" title="NodeJS安装">
+                  NodeJS安装 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Umino Natsusou</span>
+</div>
+<div class="busuanzi-count">
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+<!-- 网站运行时间的设置 -->
+<span id="timeDate">载入天数...</span>
+<!-- <span id="times">载入时分秒...</span> -->
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("01/01/2023 00:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); 
+        if(String(snum).length ==1 ){snum = "0" + snum;}
+        // var times = document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "+hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+setInterval("createtime()",250);
+</script>
+
+
+    </div>
+  </footer>
+
+  
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right"},"mobile":{"show":false}});</script></body>
+</html>
