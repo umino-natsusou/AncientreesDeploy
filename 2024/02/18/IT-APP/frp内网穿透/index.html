@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"ancientrees.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.14.1","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"width":300},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="地址。 1. 服务端 配置 vim &#x2F;usr&#x2F;lib&#x2F;systemd&#x2F;system&#x2F;frps.service，实现设置systemctl 管理。类似可配置frpc.service。 frps.service（vim &#x2F;usr&#x2F;lib&#x2F;systemd&#x2F;system&#x2F;frps.service）： 12345678910111213[Unit]Description&#x3D;Frps Server Servic">
+<meta property="og:type" content="article">
+<meta property="og:title" content="frp内网穿透">
+<meta property="og:url" content="http://ancientrees.com/2024/02/18/IT-APP/frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/index.html">
+<meta property="og:site_name" content="Ancientrees">
+<meta property="og:description" content="地址。 1. 服务端 配置 vim &#x2F;usr&#x2F;lib&#x2F;systemd&#x2F;system&#x2F;frps.service，实现设置systemctl 管理。类似可配置frpc.service。 frps.service（vim &#x2F;usr&#x2F;lib&#x2F;systemd&#x2F;system&#x2F;frps.service）： 12345678910111213[Unit]Description&#x3D;Frps Server Servic">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-02-18T11:56:46.000Z">
+<meta property="article:modified_time" content="2024-08-03T10:54:25.816Z">
+<meta property="article:author" content="Umino Natsusou">
+<meta property="article:tag" content="IT">
+<meta property="article:tag" content="APP">
+<meta property="article:tag" content="内网穿透">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://ancientrees.com/2024/02/18/IT-APP/frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://ancientrees.com/2024/02/18/IT-APP/frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/","path":"2024/02/18/IT-APP/frp内网穿透/","title":"frp内网穿透"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>frp内网穿透 | Ancientrees</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Ancientrees</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-%E6%9C%8D%E5%8A%A1%E7%AB%AF"><span class="nav-number">1.</span> <span class="nav-text">1. 服务端</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-%E9%85%8D%E7%BD%AENGINX"><span class="nav-number">2.</span> <span class="nav-text">2. 配置NGINX</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-%E5%AE%A2%E6%88%B7%E7%AB%AF"><span class="nav-number">3.</span> <span class="nav-text">3. 客户端</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-%E5%8A%A0%E5%AF%86%E7%9A%84SSH%E9%93%BE%E6%8E%A5"><span class="nav-number">4.</span> <span class="nav-text">4. 加密的SSH链接</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-%E6%95%B0%E6%8D%AE%E5%BA%93%E7%A9%BF%E9%80%8F"><span class="nav-number">5.</span> <span class="nav-text">5. 数据库穿透</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Umino Natsusou"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Umino Natsusou</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yourname" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yourname" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yourname@gmail.com" title="E-Mail → mailto:yourname@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/yourname" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;yourname" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/yourname" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;yourname" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/yourname" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;yourname" rel="noopener me" target="_blank"><i class="fab fa-facebook fa-fw"></i>FB Page</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/yourname" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;yourname" rel="noopener me" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://youtube.com/yourname" title="YouTube → https:&#x2F;&#x2F;youtube.com&#x2F;yourname" rel="noopener me" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/yourname" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;yourname" rel="noopener me" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="skype:yourname?call|chat" title="Skype → skype:yourname?call|chat" rel="noopener me" target="_blank"><i class="fab fa-skype fa-fw"></i>Skype</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://ancientrees.com/2024/02/18/IT-APP/frp%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Umino Natsusou">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ancientrees">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="frp内网穿透 | Ancientrees">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          frp内网穿透
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-02-18 19:56:46" itemprop="dateCreated datePublished" datetime="2024-02-18T19:56:46+08:00">2024-02-18</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2024-08-03 18:54:25" itemprop="dateModified" datetime="2024-08-03T18:54:25+08:00">2024-08-03</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/IT-APP/" itemprop="url" rel="index"><span itemprop="name">IT-APP</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><a target="_blank" rel="noopener" href="https://github.com/fatedier/frp">地址</a>。</p>
+<h4 id="1-服务端"><a href="#1-服务端" class="headerlink" title="1. 服务端"></a>1. 服务端</h4><ol>
+<li>配置 vim /usr/lib/systemd/system/frps.service，实现设置<code>systemctl</code> 管理。类似可配置frpc.service。<br> frps.service（vim /usr/lib/systemd/system/frps.service）： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Frps Server Service</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=simple</span><br><span class="line">User=nobody</span><br><span class="line">Restart=on-failure</span><br><span class="line">RestartSec=5s</span><br><span class="line">ExecStart=/home/frp/frps -c /home/frp/frps.toml</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure>
+ frpc.service（vim /usr/lib/systemd/system/frpc.service）： <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Frpc Server Service</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=simple</span><br><span class="line">User=nobody</span><br><span class="line">Restart=on-failure</span><br><span class="line">RestartSec=5s</span><br><span class="line">ExecStart=/home/frp/frpc -c /home/frp/frpc.toml</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br></pre></td></tr></table></figure></li>
+<li>下载相应版本的frp（下载到home文件夹内）<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget https://github.com/fatedier/frp/releases/download/v0.54.0/frp_0.54.0_linux_amd64.tar.gz</span><br></pre></td></tr></table></figure></li>
+<li>解压&amp;复制&amp;给予权限<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">tar -xzvf frp_0.54.0_linux_amd64.tar.gz</span><br><span class="line">cp -r frp_0.54.0_linux_amd64 frp</span><br><span class="line"></span><br><span class="line"># 给予权限</span><br><span class="line">chmod -R 777 frp</span><br></pre></td></tr></table></figure></li>
+<li>进入frp文件夹，编辑frps.toml，vim frps.toml<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># frp服务器端口，防火墙需要开放</span></span><br><span class="line">bindPort = 14000</span><br><span class="line"><span class="comment"># 自定义监听端口，所有对该端口的访问将被转发到本地内网，配合反向代理可不做防火墙放行</span></span><br><span class="line">vhostHTTPPort = 14001</span><br><span class="line">vhostHTTPSPort = 14002</span><br><span class="line"><span class="comment"># QUIC 绑定的是 UDP 端口，可以和 bindPort 一样</span></span><br><span class="line">quicBindPort = 14003</span><br><span class="line"><span class="comment"># 认证token，frpc/frps通信认证</span></span><br><span class="line">auth.token = <span class="string">&quot;psw&quot;</span></span><br><span class="line"><span class="comment"># 是否启用端口复用</span></span><br><span class="line">transport.tls.disableCustomTLSFirstByte = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 日志输出文件路径</span></span><br><span class="line">log.to = <span class="string">&quot;slog&quot;</span></span><br><span class="line"><span class="comment"># 日志文件最多保留天数</span></span><br><span class="line">log.maxDays = 7</span><br><span class="line"></span><br><span class="line"><span class="comment"># 服务端监听面板</span></span><br><span class="line">webServer.addr = <span class="string">&quot;0.0.0.0&quot;</span></span><br><span class="line">webServer.port = 14004</span><br><span class="line">webServer.user = <span class="string">&quot;admin&quot;</span></span><br><span class="line">webServer.password = <span class="string">&quot;psw&quot;</span></span><br><span class="line"><span class="comment">#webServer.tls.certFile = &quot;Your server.crt&quot;</span></span><br><span class="line"><span class="comment">#webServer.tls.keyFile = &quot;Your server.key&quot;</span></span><br></pre></td></tr></table></figure></li>
+<li>启动&amp;添加到开机自启动<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 启动</span></span><br><span class="line">sudo systemctl start frps</span><br><span class="line">sudo systemctl start frpc</span><br><span class="line"><span class="comment"># 重启</span></span><br><span class="line">sudo systemctl restart frps</span><br><span class="line">sudo systemctl restart frpc</span><br><span class="line"><span class="comment"># 添加到开机自启动</span></span><br><span class="line">systemctl <span class="built_in">enable</span> frps</span><br><span class="line">systemctl <span class="built_in">enable</span> frpc</span><br><span class="line"><span class="comment"># 查看状态</span></span><br><span class="line">systemctl status frps</span><br><span class="line">systemctl status frpc</span><br></pre></td></tr></table></figure>
+<h4 id="2-配置NGINX"><a href="#2-配置NGINX" class="headerlink" title="2. 配置NGINX"></a>2. 配置NGINX</h4>实现反向代理，vim /etc/nginx/conf.d/frp.domain.com.conf<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 服务端监听面板</span></span><br><span class="line">server &#123;</span><br><span class="line">     listen 443 ssl;</span><br><span class="line">     server_name frpi.domain.com; <span class="comment"># 域名</span></span><br><span class="line">     ssl_certificate /home/certs/domain.com.pem; <span class="comment"># ssl路径</span></span><br><span class="line">     ssl_certificate_key /home/certs/domain.com.key; <span class="comment"># ssl路径</span></span><br><span class="line">		 <span class="comment"># 其他ssl设置</span></span><br><span class="line">		 ssl_protocols TLSv1 TLSv1.1 TLSv1.2;</span><br><span class="line">		 ssl_ciphers EECDH+CHACHA20:EECDH+AES128:RSA+AES128:EECDH+AES256:RSA+AES256:EECDH+3DES:RSA+3DES:!MD5;</span><br><span class="line">		 ssl_prefer_server_ciphers on;</span><br><span class="line">		 ssl_session_timeout 10m;</span><br><span class="line">		 ssl_session_cache <span class="built_in">builtin</span>:1000 shared:SSL:10m;</span><br><span class="line">		 ssl_buffer_size 1400;</span><br><span class="line">		 add_header Strict-Transport-Security max-age=15768000;</span><br><span class="line">		 ssl_stapling on;</span><br><span class="line">		 ssl_stapling_verify on;</span><br><span class="line">		 <span class="comment"># access_log /etc/nginx/conf.d/logs/example.com.log combined;</span></span><br><span class="line"></span><br><span class="line">     location / &#123;</span><br><span class="line">         proxy_pass http://localhost:14004; <span class="comment"># 代理的服务端口</span></span><br><span class="line">         proxy_set_header Host <span class="variable">$host</span>;</span><br><span class="line">         proxy_set_header X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">         proxy_set_header X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">         proxy_set_header X-Forwarded-Proto <span class="variable">$scheme</span>; </span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br><span class="line">server &#123;</span><br><span class="line">      listen 80;</span><br><span class="line">      server_name frpi.domain.com;   <span class="comment"># HTTP重定向到HTTPS</span></span><br><span class="line">      <span class="built_in">return</span> 301 https://$server_name<span class="variable">$request_uri</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># frp服务端口代理</span></span><br><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    listen [::]:80;</span><br><span class="line">    server_name frps.domain.com;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_pass http://localhost:14000;  <span class="comment"># 将流量发送到应用程序所在的端口</span></span><br><span class="line">        proxy_set_header Host <span class="variable">$host</span>;</span><br><span class="line">        proxy_set_header X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        proxy_set_header X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        proxy_set_header X-Forwarded-Proto <span class="variable">$scheme</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment"># 穿透的服务端口</span></span><br><span class="line">server &#123;</span><br><span class="line">    listen 80;</span><br><span class="line">    server_name *.frp.domain.com;</span><br><span class="line"></span><br><span class="line">    location / &#123;</span><br><span class="line">        proxy_pass http://localhost:14001;  <span class="comment"># 将流量发送到应用程序所在的端口</span></span><br><span class="line">        proxy_set_header Host <span class="variable">$host</span>;</span><br><span class="line">        proxy_set_header X-Real-IP <span class="variable">$remote_addr</span>;</span><br><span class="line">        proxy_set_header X-Forwarded-For <span class="variable">$proxy_add_x_forwarded_for</span>;</span><br><span class="line">        proxy_set_header X-Forwarded-Proto <span class="variable">$scheme</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+重启nginx，sudo systemctl restart nginx。至此，服务端配置完毕。</li>
+</ol>
+<h4 id="3-客户端"><a href="#3-客户端" class="headerlink" title="3. 客户端"></a>3. 客户端</h4><p>编写frpc.toml</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 远程服务器地址,支持域名和ip</span></span><br><span class="line">serverAddr = <span class="string">&quot;xxx.xxx.xxx.xx&quot;</span></span><br><span class="line"><span class="comment"># 远程服务器监听端口，可以配合nginx反向代理实现去端口</span></span><br><span class="line">serverPort = 14000</span><br><span class="line"><span class="comment"># 启用quic协议</span></span><br><span class="line"><span class="comment">#transport.protocol = &quot;quic&quot;</span></span><br><span class="line"><span class="comment">#quicBindPort = 14003</span></span><br><span class="line"><span class="comment"># 认证token，frpc/frps通信认证</span></span><br><span class="line">auth.token = <span class="string">&quot;password&quot;</span></span><br><span class="line"><span class="comment"># 启用端口复用</span></span><br><span class="line">transport.tls.disableCustomTLSFirstByte = <span class="literal">false</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 客户端面板</span></span><br><span class="line">webServer.addr = <span class="string">&quot;127.0.0.1&quot;</span></span><br><span class="line">webServer.port = 14004</span><br><span class="line">webServer.user = <span class="string">&quot;user&quot;</span></span><br><span class="line">webServer.password = <span class="string">&quot;password&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 日志输出文件路径</span></span><br><span class="line">log.to = <span class="string">&quot;clog&quot;</span></span><br><span class="line"><span class="comment"># 日志文件最多保留天数</span></span><br><span class="line">log.maxDays = 7</span><br><span class="line"></span><br><span class="line"><span class="comment"># 以上为frpc固定项配置</span></span><br><span class="line"></span><br><span class="line">[[proxies]]</span><br><span class="line">name = <span class="string">&quot;web&quot;</span></span><br><span class="line"><span class="built_in">type</span> = <span class="string">&quot;http&quot;</span></span><br><span class="line">localIP = <span class="string">&quot;127.0.0.1&quot;</span></span><br><span class="line">localPort = 8888</span><br><span class="line">customDomains = [<span class="string">&quot;xx.frp.domains.com&quot;</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># 需要增加本地服务的话，增加 proxies 配置和子域名即可</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 相对完整的代理示例，一般情况下http代理只需要填写到 customDomains 即可</span></span><br><span class="line"><span class="comment"># [[proxies]]</span></span><br><span class="line"><span class="comment"># name = &quot;web&quot;</span></span><br><span class="line"><span class="comment"># type = &quot;http&quot;</span></span><br><span class="line"><span class="comment"># localPort = 80</span></span><br><span class="line"><span class="comment"># customDomains = [&quot;www.domains.com&quot;]</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># # 代理负载均衡，相同groupKey的代理,会视为负载均衡</span></span><br><span class="line"><span class="comment"># # 对于 tcp 类型代理，需要确保 groupKey 相同以进行权限验证，同时 remotePort 也需一致。</span></span><br><span class="line"><span class="comment"># # 对于 http 类型代理，需要保证 groupKey, customDomains(自定义域名)，subdomain 和 locations 相同。</span></span><br><span class="line"><span class="comment"># loadBalancer.group = &quot;web&quot;</span></span><br><span class="line"><span class="comment"># loadBalancer.groupKey = &quot;123&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># # 启用健康检查，类型为 http</span></span><br><span class="line"><span class="comment"># healthCheck.type = &quot;http&quot;</span></span><br><span class="line"><span class="comment"># # 健康检查发送 http 请求的 path，后端服务需要返回 2xx 的 http 状态码</span></span><br><span class="line"><span class="comment"># healthCheck.path = &quot;/status&quot;</span></span><br><span class="line"><span class="comment"># # 建立连接超时时间为 3 秒</span></span><br><span class="line"><span class="comment"># healthCheck.timeoutSeconds = 3</span></span><br><span class="line"><span class="comment"># # 连续 3 次检查失败，此 proxy 会被摘除</span></span><br><span class="line"><span class="comment"># healthCheck.maxFailed = 3</span></span><br><span class="line"><span class="comment"># # 每隔 10 秒进行一次健康检查</span></span><br><span class="line"><span class="comment"># healthCheck.intervalSeconds = 10</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># # 获取用户真实IP，具体配置见 https://gofrp.org/zh-cn/docs/features/common/realip/</span></span><br><span class="line"><span class="comment"># transport.proxyProtocolVersion = &quot;v2&quot;</span></span><br><span class="line"><span class="comment"># # 带宽限速，支持MB,KB</span></span><br><span class="line"><span class="comment"># transport.bandwidthLimit = &quot;1MB&quot;</span></span><br></pre></td></tr></table></figure>
+<p>启动：<code>./frpc -c ./frpc.toml</code> 。</p>
+<p>服务器端设置好反向代理、域名供应商处设置好子域名后，即可用<strong>xx.frp.domains.com</strong>访问本地服务。</p>
+<h4 id="4-加密的SSH链接"><a href="#4-加密的SSH链接" class="headerlink" title="4. 加密的SSH链接"></a>4. 加密的SSH链接</h4><p>按前设置好frp服务器端。然后分别在两台计算机上（A、B，假设要从B访问A）设置好frp客户端，即可进行SSH连接。</p>
+<ol>
+<li><p>计算机A（目标计算机）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># frpc.toml</span></span><br><span class="line">[[proxies]]</span><br><span class="line">name = <span class="string">&quot;xx_secret_ssh&quot;</span></span><br><span class="line"><span class="built_in">type</span> = <span class="string">&quot;stcp&quot;</span></span><br><span class="line">secretKey = <span class="string">&quot;psw&quot;</span></span><br><span class="line">localIP = <span class="string">&quot;127.0.0.1&quot;</span></span><br><span class="line">localPort = 22</span><br></pre></td></tr></table></figure>
+<p>在计算机A上启动frpc服务，<code>./frpc -c ./frpc.toml</code>。</p>
+</li>
+<li><p>计算机B</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">[[visitors]]</span><br><span class="line">name = <span class="string">&quot;xx_ssh_visitor&quot;</span></span><br><span class="line"><span class="built_in">type</span> = <span class="string">&quot;stcp&quot;</span></span><br><span class="line">serverName = <span class="string">&quot;xx_secret_ssh&quot;</span></span><br><span class="line">secretKey = <span class="string">&quot;psw&quot;</span></span><br><span class="line">bindAddr = <span class="string">&quot;127.0.0.1&quot;</span></span><br><span class="line">bindPort = 6000</span><br></pre></td></tr></table></figure>
+<p>在计算机B启动frpc服务，<code>./frpc -c ./frpc.toml</code>。</p>
+</li>
+</ol>
+<p>设置完毕，在计算机B上可通过<code>ssh -oPort=6000 root@127.0.0.1</code>连接计算机A。</p>
+<h4 id="5-数据库穿透"><a href="#5-数据库穿透" class="headerlink" title="5. 数据库穿透"></a>5. 数据库穿透</h4><p>数据库所在计算机配置：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 3306为数据库服务所在端口</span></span><br><span class="line"><span class="comment"># frps服务器计算机开放13306端口</span></span><br><span class="line">[[proxies]]</span><br><span class="line">name = <span class="string">&quot;mariadb&quot;</span></span><br><span class="line"><span class="built_in">type</span> = <span class="string">&quot;tcp&quot;</span></span><br><span class="line">localIP = <span class="string">&quot;127.0.0.1&quot;</span></span><br><span class="line">localPort = 3306</span><br><span class="line">remotePort = 13306</span><br></pre></td></tr></table></figure>
+<p>则可在任何地方，以frps服务器计算机ip:13306访问数据库。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/IT/" rel="tag"># IT</a>
+              <a href="/tags/APP/" rel="tag"># APP</a>
+              <a href="/tags/%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/" rel="tag"># 内网穿透</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/02/18/IT-Linux/SSH%E9%93%BE%E6%8E%A5%E7%9B%B8%E5%85%B3/" rel="prev" title="SSH链接相关">
+                  <i class="fa fa-chevron-left"></i> SSH链接相关
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/02/18/IT-JavaScript/Vue%2001%20-%20%E9%A1%B9%E7%9B%AE%E6%90%AD%E5%BB%BA&%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83/" rel="next" title="Vue 01 - 项目搭建&开发环境">
+                  Vue 01 - 项目搭建&开发环境 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Umino Natsusou</span>
+</div>
+<div class="busuanzi-count">
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+<!-- 网站运行时间的设置 -->
+<span id="timeDate">载入天数...</span>
+<!-- <span id="times">载入时分秒...</span> -->
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("01/01/2023 00:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); 
+        if(String(snum).length ==1 ){snum = "0" + snum;}
+        // var times = document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "+hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+setInterval("createtime()",250);
+</script>
+
+
+    </div>
+  </footer>
+
+  
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right"},"mobile":{"show":false}});</script></body>
+</html>

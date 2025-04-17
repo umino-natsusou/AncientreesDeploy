@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#222" media="(prefers-color-scheme: dark)"><meta name="generator" content="Hexo 5.4.2">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha256-Z1K5uhUaJXA7Ll0XrZ/0JhX4lAtZFpT6jkKrEDT0drU=" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.1.1/animate.min.css" integrity="sha256-PR7ttpcvz8qrF57fur/yAx1qXMFJeJFiA6pSzWi0OIE=" crossorigin="anonymous">
+
+<script class="next-config" data-name="main" type="application/json">{"hostname":"ancientrees.com","root":"/","images":"/images","scheme":"Pisces","darkmode":true,"version":"8.14.1","exturl":false,"sidebar":{"position":"right","display":"post","padding":18,"offset":12,"width":300},"copycode":{"enable":true,"style":"mac"},"bookmark":{"enable":false,"color":"#222","save":"auto"},"mediumzoom":false,"lazyload":true,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"stickytabs":false,"motion":{"enable":true,"async":false,"transition":{"menu_item":"fadeInDown","post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"搜索...","empty":"没有找到任何搜索结果：${query}","hits_time":"找到 ${hits} 个搜索结果（用时 ${time} 毫秒）","hits":"找到 ${hits} 个搜索结果"},"path":"/search.xml","localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false}}</script><script src="/js/config.js"></script>
+
+    <meta name="description" content="地址。 1. .ckpt文件（CheckPoint） 和 .safetensors文件都是用来保存模型权重和参数的文件。模型文件的放置位置：\stable-diffusion-webui\models\Stable-diffusion。 .ckpt 文件是用 pickle 序列化的，可能包含恶意代码。 .safetensors 文件是用 numpy 保存的，这只包含张量数据，没有任何代码，加载 .">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SD.01.基本概念">
+<meta property="og:url" content="http://ancientrees.com/2024/12/27/AIPaint/SD.01.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/index.html">
+<meta property="og:site_name" content="Ancientrees">
+<meta property="og:description" content="地址。 1. .ckpt文件（CheckPoint） 和 .safetensors文件都是用来保存模型权重和参数的文件。模型文件的放置位置：\stable-diffusion-webui\models\Stable-diffusion。 .ckpt 文件是用 pickle 序列化的，可能包含恶意代码。 .safetensors 文件是用 numpy 保存的，这只包含张量数据，没有任何代码，加载 .">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-12-27T02:16:06.000Z">
+<meta property="article:modified_time" content="2025-01-06T03:35:56.138Z">
+<meta property="article:author" content="Umino Natsusou">
+<meta property="article:tag" content="AI">
+<meta property="article:tag" content="Paint">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="http://ancientrees.com/2024/12/27/AIPaint/SD.01.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/">
+
+
+
+<script class="next-config" data-name="page" type="application/json">{"sidebar":"","isHome":false,"isPost":true,"lang":"zh-CN","comments":true,"permalink":"http://ancientrees.com/2024/12/27/AIPaint/SD.01.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/","path":"2024/12/27/AIPaint/SD.01.基本概念/","title":"SD.01.基本概念"}</script>
+
+<script class="next-config" data-name="calendar" type="application/json">""</script>
+<title>SD.01.基本概念 | Ancientrees</title>
+  
+
+
+
+
+
+
+  <script async defer data-website-id="" src=""></script>
+
+  <script defer data-domain="" src=""></script>
+
+  <noscript>
+    <link rel="stylesheet" href="/css/noscript.css">
+  </noscript>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <div class="column">
+      <header class="header" itemscope itemtype="http://schema.org/WPHeader"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <p class="site-title">Ancientrees</p>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger" aria-label="搜索" role="button">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu"><li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a></li><li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a></li><li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a></li><li class="menu-item menu-item-archives"><a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a></li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup"><div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off" maxlength="80"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close" role="button">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div class="search-result-container no-result">
+  <div class="search-result-icon">
+    <i class="fa fa-spinner fa-pulse fa-5x"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</header>
+        
+  
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-ckpt%E6%96%87%E4%BB%B6%EF%BC%88CheckPoint%EF%BC%89-%E5%92%8C-safetensors%E6%96%87%E4%BB%B6"><span class="nav-number">1.</span> <span class="nav-text">1. .ckpt文件（CheckPoint） 和 .safetensors文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-vae-pt%E6%96%87%E4%BB%B6"><span class="nav-number">2.</span> <span class="nav-text">2. .vae.pt文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-embeddings"><span class="nav-number">3.</span> <span class="nav-text">3. embeddings</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-LoRA"><span class="nav-number">4.</span> <span class="nav-text">4.LoRA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-ControlNet"><span class="nav-number">5.</span> <span class="nav-text">5. ControlNet</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-hypernetworks-pt"><span class="nav-number">6.</span> <span class="nav-text">6. hypernetworks .pt</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Umino Natsusou"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Umino Natsusou</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+        <a href="/archives/">
+          <span class="site-state-item-count">34</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+          <a href="/categories/">
+        <span class="site-state-item-count">11</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+          <a href="/tags/">
+        <span class="site-state-item-count">24</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author animated">
+      <span class="links-of-author-item">
+        <a href="https://github.com/yourname" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;yourname" rel="noopener me" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="mailto:yourname@gmail.com" title="E-Mail → mailto:yourname@gmail.com" rel="noopener me" target="_blank"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://weibo.com/yourname" title="Weibo → https:&#x2F;&#x2F;weibo.com&#x2F;yourname" rel="noopener me" target="_blank"><i class="fab fa-weibo fa-fw"></i>Weibo</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://twitter.com/yourname" title="Twitter → https:&#x2F;&#x2F;twitter.com&#x2F;yourname" rel="noopener me" target="_blank"><i class="fab fa-twitter fa-fw"></i>Twitter</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://www.facebook.com/yourname" title="FB Page → https:&#x2F;&#x2F;www.facebook.com&#x2F;yourname" rel="noopener me" target="_blank"><i class="fab fa-facebook fa-fw"></i>FB Page</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://stackoverflow.com/yourname" title="StackOverflow → https:&#x2F;&#x2F;stackoverflow.com&#x2F;yourname" rel="noopener me" target="_blank"><i class="fab fa-stack-overflow fa-fw"></i>StackOverflow</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://youtube.com/yourname" title="YouTube → https:&#x2F;&#x2F;youtube.com&#x2F;yourname" rel="noopener me" target="_blank"><i class="fab fa-youtube fa-fw"></i>YouTube</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="https://instagram.com/yourname" title="Instagram → https:&#x2F;&#x2F;instagram.com&#x2F;yourname" rel="noopener me" target="_blank"><i class="fab fa-instagram fa-fw"></i>Instagram</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="skype:yourname?call|chat" title="Skype → skype:yourname?call|chat" rel="noopener me" target="_blank"><i class="fab fa-skype fa-fw"></i>Skype</a>
+      </span>
+  </div>
+
+        </div>
+      </div>
+        <div class="back-to-top animated" role="button" aria-label="返回顶部">
+          <i class="fa fa-arrow-up"></i>
+          <span>0%</span>
+        </div>
+    </div>
+
+    
+  </aside>
+
+
+    </div>
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://ancientrees.com/2024/12/27/AIPaint/SD.01.%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Umino Natsusou">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Ancientrees">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="post" itemscope itemtype="http://schema.org/CreativeWork">
+      <meta itemprop="name" content="SD.01.基本概念 | Ancientrees">
+      <meta itemprop="description" content="">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          SD.01.基本概念
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">发表于</span>
+
+      <time title="创建时间：2024-12-27 10:16:06" itemprop="dateCreated datePublished" datetime="2024-12-27T10:16:06+08:00">2024-12-27</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar-check"></i>
+      </span>
+      <span class="post-meta-item-text">更新于</span>
+      <time title="修改时间：2025-01-06 11:35:56" itemprop="dateModified" datetime="2025-01-06T11:35:56+08:00">2025-01-06</time>
+    </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">分类于</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/AIPaint/" itemprop="url" rel="index"><span itemprop="name">AIPaint</span></a>
+        </span>
+    </span>
+
+  
+    <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv">
+      <span class="post-meta-item-icon">
+        <i class="far fa-eye"></i>
+      </span>
+      <span class="post-meta-item-text">阅读次数：</span>
+      <span id="busuanzi_value_page_pv"></span>
+    </span>
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><a target="_blank" rel="noopener" href="https://github.com/AUTOMATIC1111/stable-diffusion-webui">地址</a>。</p>
+<h3 id="1-ckpt文件（CheckPoint）-和-safetensors文件"><a href="#1-ckpt文件（CheckPoint）-和-safetensors文件" class="headerlink" title="1. .ckpt文件（CheckPoint） 和 .safetensors文件"></a>1. .ckpt文件（CheckPoint） 和 .safetensors文件</h3><p>都是用来保存模型权重和参数的文件。模型文件的放置位置：<strong>\stable-diffusion-webui\models\Stable-diffusion</strong>。</p>
+<p>.ckpt 文件是用 pickle 序列化的，可能包含恶意代码。</p>
+<p>.safetensors 文件是用 numpy 保存的，这只包含张量数据，没有任何代码，加载 .safetensors 文件更安全和快速。</p>
+<p>如今模型文件基本都是.safetensors。</p>
+<p>将 .ckpt 文件转换为 .safetensors 文件，你需要先加载 .ckpt 文件中的数据，然后用 numpy 保存为 .safetensors 文件。</p>
+<p>模型文件的名称，组成词有不同的含义，如一个模型文件为“v1-5-pruned-emaonly.safetensors”，则：</p>
+<ul>
+<li>pruned是一种剪枝技术，可以减少模型体积，提高运行速度。</li>
+<li>emaonly是一种指定模型文件只包含指数移动平均权重（EMA）的标识。可以降低显存占用。</li>
+</ul>
+<h3 id="2-vae-pt文件"><a href="#2-vae-pt文件" class="headerlink" title="2. .vae.pt文件"></a>2. .vae.pt文件</h3><p><strong>VAE最主要影响画面的色彩质感</strong>，所以可以理解成为<strong>调色滤镜</strong>。</p>
+<p><strong>放置位置</strong>：<strong>\stable-diffusion-webui\models\VAE</strong></p>
+<p><strong>使用方法</strong>：：<strong>Settings → Stable Diffusion → SD VAE</strong>，选择所需要的VAE。</p>
+<p>用来保存变分自编码器（VAE）的权重和参数的文件，VAE 是一种生成模型，可以用来对图像进行编码和解码。VAE 的为 Stable-diffusion 的模型提供:</p>
+<ol>
+<li>低维的隐空间，可以在这个空间中控制图像的风格和特征。</li>
+<li>初始化的图像，可以在这个图像的基础上进行细化和改进。</li>
+<li>颜色校正的功能，可以让生成的图像更加鲜艳或者柔和。</li>
+</ol>
+<p>很多模型本身就包含有VAE，不用额外加载。也有适合于多种模型的VAE。</p>
+<p>如果模型有VAE文件，最好要加载VAE文件。</p>
+<h3 id="3-embeddings"><a href="#3-embeddings" class="headerlink" title="3. embeddings"></a>3. embeddings</h3><p><strong>嵌入式向量，一般都用于广泛、容错率高的概念和含义集合</strong>。可对于具体的形象和概念，Lora表现更出色。</p>
+<p><strong>放置位置</strong>：<strong>stable-diffusion-webui\embeddings</strong></p>
+<p><strong>使用方法</strong>：按模型说明输入触发词即可。</p>
+<p>embeddings模型是一种用于生成图片的语言理解组件，接受文本提示并产生token embeddings。</p>
+<p>embeddings模型可以与编码器和解码器配合使用，通过余弦距离比较编码后的embeddings和目标图片的相似性，从而优化生成图片的质量。</p>
+<p>embeddings模型有多种不同的训练方法，例如Textual Inversion、Hypernetwork、Dreambooth 和 LoRA，它们各有优劣和适用场景。</p>
+<h3 id="4-LoRA"><a href="#4-LoRA" class="headerlink" title="4.LoRA"></a>4.LoRA</h3><p><strong>向AI传递、描述一个准确、具体清晰的形象或者概念</strong>。要强化某个形象或者概念的时候，可以多个Lora在一起混合使用。</p>
+<ul>
+<li>衣服类的LoRa权重不要太高。</li>
+</ul>
+<p><strong>放置位置</strong>：<strong>stable-diffusion-webui\models\Lora</strong><br><strong>使用方法</strong>：<strong>以&lt;<a href="lora:triggerWord:0.8">lora:triggerWord:0.8</a>&gt;触发，小数部分表示权重</strong>。lora模型说明里或许会有各种各样的触发词，照着说明使用即可。</p>
+<p>LoRA是一种用于大语言模型的低秩逼近（Low-Rank Approximation）技术，可以减少参数量和计算量，提高训练效率和生成质量。</p>
+<p>LoRA也可以用于Stable-diffusion中的交叉关注层（cross-attention layers），从而改善用文字生成图片的效果。</p>
+<p>LoRA模型的个头都比较小，常见的都是144MB左右，使用的时候要与精简版（prund）的Stable Diffusion1.5模型配合使用。</p>
+<h3 id="5-ControlNet"><a href="#5-ControlNet" class="headerlink" title="5. ControlNet"></a>5. ControlNet</h3><p>ControlNet根据一些额外信息控制扩散的生成走向，微调扩散模型，可以有很广泛的应用（例如控制姿势）。<a target="_blank" rel="noopener" href="https://github.com/Mikubill/sd-webui-controlnet.git">地址</a>。注意下载ControlNet模型的时候，还需下载其yaml配置文件。</p>
+<h3 id="6-hypernetworks-pt"><a href="#6-hypernetworks-pt" class="headerlink" title="6. hypernetworks .pt"></a>6. hypernetworks .pt</h3><p><strong>用于改变图像的整体风格，也就是画风</strong>。前很多时候，可以被LoRa和embeddings取代。</p>
+<p><strong>放置位置</strong>：<strong>stable-diffusion-webui\models\hypernetworks</strong></p>
+<p><strong>使用方法</strong>：<strong>设置 =&gt; Stable Difusion =&gt; 附加网络 =&gt; 将超网络(Hypernetwork) 添加到提示词</strong>。至此便可以了，不需要手动再输入提示词。</p>
+<p>hypernetworks .pt 文件是用来保存超网络（hypernetworks）的权重和参数的，超网络是一种可以生成其他网络权重的网络。超网络的特点是：</p>
+<ol>
+<li>可以用来对 Stable-diffusion 的模型进行文本反演（textual inversion），即根据自己的图片训练一个小部分的神经网络，然后用这个结果来生成新的图片。</li>
+<li>可以用来对 Stable-diffusion 的模型进行风格迁移（style transfer），即根据自己的图片或者其他模型生成一个新的权重，然后用这个权重来改变生成图片的风格。</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/AI/" rel="tag"># AI</a>
+              <a href="/tags/Paint/" rel="tag"># Paint</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2024/11/05/IT-Android/Compose%E7%8A%B6%E6%80%81%E7%AE%A1%E7%90%86/" rel="prev" title="Compose状态管理">
+                  <i class="fa fa-chevron-left"></i> Compose状态管理
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2024/12/27/AIPaint/AIPaint.%E5%8F%82%E6%95%B0%E8%A7%A3%E6%9E%90/" rel="next" title="SD.02.参数解析">
+                  SD.02.参数解析 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Umino Natsusou</span>
+</div>
+<div class="busuanzi-count">
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/pisces/" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+<!-- 网站运行时间的设置 -->
+<span id="timeDate">载入天数...</span>
+<!-- <span id="times">载入时分秒...</span> -->
+<script>
+    var now = new Date();
+    function createtime() {
+        var grt= new Date("01/01/2023 00:00:00");//此处修改你的建站时间或者网站上线时间
+        now.setTime(now.getTime()+250);
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days);
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours);
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum);
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;}
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum);
+        snum = Math.round(seconds); 
+        if(String(snum).length ==1 ){snum = "0" + snum;}
+        // var times = document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "+hnum + " 小时 " + mnum + " 分 " + snum + " 秒";
+    }
+setInterval("createtime()",250);
+</script>
+
+
+    </div>
+  </footer>
+
+  
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js" integrity="sha256-XL2inqUJaslATFnHdJOi9GfQ60on8Wx1C2H8DYiN1xY=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lozad.js/1.16.0/lozad.min.js" integrity="sha256-mOFREFhqmHeQbXpK2lp4nA3qooVgACfh88fpJftLBbc=" crossorigin="anonymous"></script>
+<script src="/js/comments.js"></script><script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/hexo-generator-searchdb/1.4.1/search.js" integrity="sha256-1kfA5uHPf65M5cphT2dvymhkuyHPQp5A53EGZOnOLmc=" crossorigin="anonymous"></script>
+<script src="/js/third-party/search/local-search.js"></script>
+
+
+
+
+
+  
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"log":false,"model":{"jsonPath":"/live2dw/assets/shizuku.model.json"},"display":{"position":"right"},"mobile":{"show":false}});</script></body>
+</html>
